@@ -57,7 +57,7 @@ ROOT_URLCONF = 'pystore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR]/"templates",  # pasta para os templates
+        'DIRS': [BASE_DIR/"templates"],  # pasta para os templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
