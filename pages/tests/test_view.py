@@ -1,6 +1,6 @@
 import pytest
 from django.urls import resolve, reverse
-from pytest_django.asserts import assertsTemplateUsed
+from pytest_django.asserts import assertTemplateUsed
 
 # assertsTemplateUsed : Vamos garatir que a template que a gente quer
 # esta sendo usada
@@ -29,4 +29,16 @@ class TestHomePageView:
         assert home_response.status_code == 200
 
     def test_template(self, home_response):
-        assertsTemplateUsed(home_response, "about.html")
+        assertTemplateUsed(home_response, "home.html")
+
+
+class TestAboutView:
+    def test_reverse_resolve(self):
+        assert reverse("pages:about") == "/about/"
+        assert resolve("/about/").view_name == "pages:about"
+
+    def test_status_code(self, about_response):
+        assert about_response.status_code == 200
+
+    def test_template(self, about_response):
+        assertTemplateUsed(about_response, "about.html")
